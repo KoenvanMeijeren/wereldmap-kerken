@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  mariadb:
+    container_name: "cgk_mariadb"
+    image: wodby/mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: cgkRootPass
+      MYSQL_DATABASE: cgk
+      MYSQL_USER: cgkUser
+      MYSQL_PASSWORD: cgkPass
+  php:
+    container_name: "cgk_php"
+    image: wodby/drupal-php:latest
+    depends_on:
+      - mariadb
+      - redis
+    environment:
+      PHP_FPM_CLEAR_ENV: "no"
+      MYSQL_DATABASE: cgk
+      MYSQL_HOSTNAME: mariadb
+      MYSQL_USER: cgkUser
+      MYSQL_PASSWORD: cgkPass
+      REDIS_HOST: redis
+    volumes:
+      - ./:/var/www/html:cached
+  nginx:
+    container_name: "cgk_nginx"
+    image: wodby/nginx:latest
+    depends_on:
+      - php
+    environment:
+      NGINX_STATIC_OPEN_FILE_CACHE: "off"
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_ROOT: /var/www/html/public_html/
+      NGINX_VHOST_PRESET: php
+    volumes:
+      - ./:/var/www/html:cached
+  redis:
+    container_name: "cgk_redis"
+    image: wodby/redis:latest
+  mailhog:
+    container_name: "cgk_mailhog"
+    image: mailhog/mailhog:latest

@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  mariadb:
+    ports:
+      - 8303:3306
+  php:
+    environment:
+      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+      MYSQL_PORT: 8303:3306
+      PHP_XDEBUG_ENABLED: 1
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG_PROFILER_ENABLE_TRIGGER: 1
+      PHP_XDEBUG_REMOTE_CONNECT_BACK: 0
+      PHP_XDEBUG_REMOTE_AUTOSTART: 0
+      PHP_XDEBUG_REMOTE_PORT: 9000
+      # Use this for windows or mac.
+      PHP_XDEBUG_REMOTE_HOST: host.docker.internal
+      # Use this for linux.
+      # PHP_XDEBUG_REMOTE_HOST: "172.19.0.1"
+  nginx:
+    environment:
+      NGINX_ERROR_LOG_LEVEL: debug
+    ports:
+      - 8887:80
+  mailhog:
+    ports:
+      - 8027:8025
