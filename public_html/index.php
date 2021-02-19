@@ -14,25 +14,78 @@
         }
 
         #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
             width: 100%;
+        }
+
+        #buttons {
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 3px;
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            background: #ee8a65;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .filter-ctrl {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+        }
+
+        .filter-ctrl input[type='text'] {
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            width: 100%;
+            border: 0;
+            background-color: #fff;
+            margin: 0;
+            color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            width: 180px;
         }
     </style>
 </head>
 <body>
+<ul id="buttons">
+    <li id="button-fr" class="button">French</li>
+    <li id="button-ru" class="button">Russian</li>
+    <li id="button-de" class="button">German</li>
+    <li id="button-es" class="button">Spanish</li>
+    <li id="button-en" class="button">English</li>
+</ul>
+
 <div id='map' style='width: 100%; height: 500px;'></div>
+<div class="filter-ctrl">
+    <input id="filter-input" type="text" name="filter" placeholder="Filter by name">
+</div>
+
 </body>
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
 <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoia29lbnZhbm1laWplcmVuIiwiYSI6ImNrbGNmcmEzdzF0M24yd25wbGl5cXR6NWYifQ.Ghg_Sxd7GcuQUVaka0OcNg';
+    let layerIDs = []; // Will contain a list used to filter against.
+    const filterInput = document.getElementById('filter-input');
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [52.092876, 5.104480],
+        minZoom: 1,
         zoom: 1
     });
+
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
 
     map.on('load', function () {
         // Add a new source from our GeoJSON data and
@@ -40,107 +93,7 @@
         // add the point_count property to your source data.
         map.addSource('kerken', {
             'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': [
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "ak16994521",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.038659, 38.931567]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "ak16994519",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.003168, 38.894651]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "ak16994517",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.090372, 38.881189]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "ci38021336",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.111561, 38.882342]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "us2000b2nn",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.052477, 38.943951]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "ak16994510",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.043444, 38.909664]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "us2000b2nb",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.031706, 38.914581]
-                        }
-                    },
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "id": "nc72905861",
-                            "title": "Kerk a",
-                            "link": 'www.google.com'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.020945, 38.878241]
-                        }
-                    }
-                ]
-            },
+            'data': 'churches.json',
             cluster: true,
             clusterMaxZoom: 14, // Max zoom to cluster points on
             clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
@@ -205,10 +158,10 @@
 
         // inspect a cluster on click
         map.on('click', 'clusters', function (e) {
-            var features = map.queryRenderedFeatures(e.point, {
+            const features = map.queryRenderedFeatures(e.point, {
                 layers: ['clusters']
             });
-            var clusterId = features[0].properties.cluster_id;
+            const clusterId = features[0].properties.cluster_id;
             map.getSource('kerken').getClusterExpansionZoom(
                 clusterId,
                 function (err, zoom) {
@@ -252,6 +205,30 @@
 
         map.on('mouseleave', 'clusters', function () {
             map.getCanvas().style.cursor = '';
+        });
+    });
+
+    document.getElementById('buttons').addEventListener('click', function (event) {
+        const language = event.target.id.substr('button-'.length);
+        // Use setLayoutProperty to set the value of a layout property in a style layer.
+        // The three arguments are the id of the layer, the name of the layout property,
+        // and the new property value.
+        map.setLayoutProperty('country-label', 'text-field', [
+            'get',
+            'name_' + language
+        ]);
+    });
+
+    filterInput.addEventListener('keyup', function (e) {
+        // If the input value matches a layerID set
+        // it's visibility to 'visible' or else hide it.
+        const value = e.target.value.trim().toLowerCase();
+        layerIDs.forEach(function (layerID) {
+            map.setLayoutProperty(
+                layerID,
+                'visibility',
+                layerID.indexOf(value) > -1 ? 'visible' : 'none'
+            );
         });
     });
 </script>

@@ -1,0 +1,101 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ak16994521",
+        "title": "Kerk a",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.038659, 38.931567]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ak16994519",
+        "title": "Kerk b",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.003168, 38.894651]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ak16994517",
+        "title": "Kerk c",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.090372, 38.881189]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ci38021336",
+        "title": "Kerk d",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.111561, 38.882342]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "us2000b2nn",
+        "title": "Kerk e",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.052477, 38.943951]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ak16994510",
+        "title": "Kerk f",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.043444, 38.909664]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "us2000b2nb",
+        "title": "Kerk g",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.031706, 38.914581]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nc72905861",
+        "title": "Kerk h",
+        "link": "www.google.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.020945, 38.878241]
+      }
+    }
+  ]
+}
