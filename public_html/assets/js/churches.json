@@ -6,7 +6,7 @@
       "properties": {
         "id": "ak16994521",
         "title": "Kerk a",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -18,7 +18,7 @@
       "properties": {
         "id": "ak16994519",
         "title": "Kerk b",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -30,7 +30,7 @@
       "properties": {
         "id": "ak16994517",
         "title": "Kerk c",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +42,7 @@
       "properties": {
         "id": "ci38021336",
         "title": "Kerk d",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -54,7 +54,7 @@
       "properties": {
         "id": "us2000b2nn",
         "title": "Kerk e",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -66,7 +66,7 @@
       "properties": {
         "id": "ak16994510",
         "title": "Kerk f",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -78,7 +78,7 @@
       "properties": {
         "id": "us2000b2nb",
         "title": "Kerk g",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
@@ -90,11 +90,47 @@
       "properties": {
         "id": "nc72905861",
         "title": "Kerk h",
-        "link": "www.google.com"
+        "link": "https://www.google.com"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [-77.020945, 38.878241]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2343fassd",
+        "title": "De Zaaier",
+        "link": "https://www.cgkdezaaier.nl/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.62520499, 52.34936894]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fdasafds32ewf",
+        "title": "De Grote Kerk",
+        "link": "https://grotekerk.hervormdharderwijk.nl/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.61656166, 52.34895305]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "qwer32frew",
+        "title": "De Kerk",
+        "link": "https://grotekerk.hervormdharderwijk.nl/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.61770707, 52.34605109]
       }
     }
   ]
