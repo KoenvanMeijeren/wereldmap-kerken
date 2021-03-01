@@ -132,6 +132,42 @@
         "type": "Point",
         "coordinates": [5.61770707, 52.34605109]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fdaserqw2",
+        "title": "De Kerk",
+        "link": "https://grotekerk.hervormdharderwijk.nl/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.344985, 48.855455]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "124fdsaeq",
+        "title": "De Kerk",
+        "link": "https://grotekerk.hervormdharderwijk.nl/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.350734, 48.859074]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "6432fdsaeqrw",
+        "title": "De Kerk",
+        "link": "https://grotekerk.hervormdharderwijk.nl/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.627639, 48.835466]
+      }
     }
   ]
 }
