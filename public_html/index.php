@@ -19,10 +19,6 @@
 </ul>
 
 <div id='map'></div>
-<div class="filter-ctrl">
-    <label class="d-none" for="filter-input">Filter op kerk</label>
-    <input id="filter-input" type="text" name="filter" placeholder="Filter op kerk">
-</div>
 
 </body>
 <script type="text/javascript" src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>

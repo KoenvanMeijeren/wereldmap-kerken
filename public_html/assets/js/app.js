@@ -4,8 +4,6 @@ getJSON('../assets/js/churches.json').then(data => {
     churches = data;
 });
 
-let layerIDs = []; // Will contain a list used to filter against.
-const filterInput = document.getElementById('filter-input');
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
